@@ -1,13 +1,13 @@
 """This program handles the communication over I2C
-between a Raspberry Pi and a MPU-6050 Gyroscope / Accelerometer combo.
-Made by: MrTijn/Tijndagamer
+between a Raspberry Pi and a MPU-9150 Gyroscope / Accelerometer combo.
+Based on code by: MrTijn/Tijndagamer
 Released under the MIT License
 Copyright (c) 2015, 2016, 2017 MrTijn/Tijndagamer
 """
 
 import smbus
 
-class mpu6050:
+class MPU9150:
 
     # Global Variables
     GRAVITIY_MS2 = 9.80665
@@ -56,7 +56,7 @@ class mpu6050:
     def __init__(self, address):
         self.address = address
 
-        # Wake up the MPU-6050 since it starts in sleep mode
+        # Wake up the MPU-9150 since it starts in sleep mode
         self.bus.write_byte_data(self.address, self.PWR_MGMT_1, 0x00)
 
     # I2C communication methods
@@ -78,18 +78,18 @@ class mpu6050:
         else:
             return value
 
-    # MPU-6050 Methods
+    # MPU-9150 Methods
 
     def get_temp(self):
-        """Reads the temperature from the onboard temperature sensor of the MPU-6050.
+        """Reads the temperature from the onboard temperature sensor of the MPU-9150.
 
         Returns the temperature in degrees Celcius.
         """
         raw_temp = self.read_i2c_word(self.TEMP_OUT0)
 
         # Get the actual temperature using the formule given in the
-        # MPU-6050 Register Map and Descriptions revision 4.2, page 30
-        actual_temp = (raw_temp / 340.0) + 36.53
+        # MPU-9150 Register Map and Descriptions revision 4.2, page 29
+        actual_temp = (raw_temp / 340.0) + 35
 
         return actual_temp
 
@@ -242,7 +242,7 @@ class mpu6050:
         return [accel, gyro, temp]
 
 if __name__ == "__main__":
-    mpu = MPU6050(0x68)
+    mpu = MPU9150(0x68)
     print(mpu.get_temp())
     accel_data = mpu.get_accel_data()
     print(accel_data['x'])
