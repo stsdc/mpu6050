@@ -21,36 +21,6 @@ Dependencies
 
 You need to have the ``python-smbus`` package installed.
 
-Installation
-------------
 
-There are two ways of installing this package: via PyPi or via the git repository.
-Installing from the git repository insures that you have the absolute latest
-version installed, but this can be prone to bugs.
-
-1. install the python-smbus package
-::
-
-    sudo apt install python-smbus
-
-2. Install this package from PyPi repository
-::
-
-    pip install mpu6050-raspberrypi
-
-Or:
-
-2. Clone the repository and run setup.py
-::
-    
-    git clone https://github.com/Tijndagamer/mpu6050.git
-    python setup.py install
-
-Issues & Bugs
--------------
-
-Please report any issues or bugs here:
-
-    https://github.com/Tijndagamer/mpu6050/issues
 
 
