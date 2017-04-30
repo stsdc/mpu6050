@@ -1,18 +1,18 @@
-mpu6050
+mpu9150
 =======
 
-A Python module for accessing the MPU-6050 digital accelerometer and gyroscope on a Raspberry Pi.
+A Python module for accessing the MPU-9150 digital accelerometer and gyroscope on a Raspberry Pi.
 
 Example
 -------
 
-Assuming that the address of your MPU-6050 is 0x68, you can read read accelerometer data like this:
+Assuming that the address of your MPU-9150 is 0x68, you can read read accelerometer data like this:
 
 ::
 
-    >>> from mpu6050 import mpu6050
+    >>> from mpu9150 import mpu9150
 
-    >>> sensor = mpu6050(0x68)
+    >>> sensor = mpu9150(0x68)
 
     >>> accelerometer_data = sensor.get_accel_data()
 
